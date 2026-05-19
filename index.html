@@ -10,7 +10,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 scroll-behavior:smooth;
 }
 
@@ -18,6 +18,72 @@ body{
 background:#f5f7fb;
 color:#333;
 overflow-x:hidden;
+}
+
+/* INTRO SCREEN */
+#introScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#020617,#1e3a8a);
+z-index:10000;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+transition:1s;
+}
+
+.intro-box{
+animation:introZoom 1.5s ease;
+padding:30px;
+}
+
+.intro-logo{
+font-size:70px;
+margin-bottom:15px;
+animation:pulse 2s infinite;
+}
+
+.intro-box h1{
+font-size:48px;
+margin-bottom:10px;
+text-shadow:0 0 20px rgba(56,189,248,.7);
+}
+
+.intro-box p{
+font-size:20px;
+margin-bottom:25px;
+opacity:.9;
+}
+
+.intro-box button{
+padding:14px 35px;
+border:none;
+border-radius:30px;
+background:#38bdf8;
+color:#000;
+font-weight:bold;
+cursor:pointer;
+font-size:18px;
+transition:.3s;
+}
+
+.intro-box button:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px #38bdf8;
+}
+
+@keyframes introZoom{
+from{opacity:0;transform:scale(.8);}
+to{opacity:1;transform:scale(1);}
+}
+
+@keyframes pulse{
+50%{transform:scale(1.1);}
 }
 
 /* LOADER */
@@ -51,7 +117,39 @@ margin-bottom:20px;
 100%{transform:rotate(360deg);}
 }
 
-/* CURSOR GLOW */
+/* Floating Buttons */
+.float-btn{
+position:fixed;
+right:20px;
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:26px;
+z-index:999;
+box-shadow:0 5px 15px rgba(0,0,0,.3);
+transition:.3s;
+}
+
+.float-btn:hover{
+transform:scale(1.1);
+}
+
+.whatsapp{
+bottom:90px;
+background:#25D366;
+}
+
+.call{
+bottom:20px;
+background:#2563eb;
+color:white;
+}
+
+/* Cursor Glow */
 .cursor-glow{
 position:fixed;
 width:25px;
@@ -64,7 +162,7 @@ z-index:999;
 filter:blur(8px);
 }
 
-/* FLOATING PARTICLES */
+/* Floating Particles */
 .particles{
 position:fixed;
 top:0;
@@ -97,6 +195,7 @@ animation:float 12s linear infinite;
 100%{transform:translateY(-10vh) scale(1.5);}
 }
 
+/* Header */
 header{
 background:linear-gradient(135deg,#0f172a,#1e40af);
 color:white;
@@ -107,7 +206,6 @@ align-items:center;
 position:sticky;
 top:0;
 z-index:100;
-box-shadow:0 4px 10px rgba(0,0,0,.2);
 }
 
 .logo{
@@ -119,37 +217,32 @@ nav a{
 color:white;
 text-decoration:none;
 margin-left:25px;
-font-size:17px;
-transition:.3s;
 }
 
 nav a:hover{
 color:#38bdf8;
 }
 
+/* Hero */
 .hero{
 height:90vh;
 background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
 url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1500&q=80');
 background-size:cover;
-background-position:center;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
-padding:20px;
 }
 
 .hero-content h1{
 font-size:55px;
-margin-bottom:20px;
 overflow:hidden;
 white-space:nowrap;
 border-right:3px solid white;
 width:0;
-animation:typing 3s steps(30,end) forwards,
-blink .7s infinite;
+animation:typing 3s steps(30,end) forwards,blink .7s infinite;
 }
 
 @keyframes typing{
@@ -163,8 +256,7 @@ to{width:100%}
 
 .hero-content p{
 font-size:22px;
-margin-bottom:30px;
-animation:fadeIn 2s ease;
+margin:20px 0;
 }
 
 .btn{
@@ -173,15 +265,9 @@ background:#2563eb;
 color:white;
 text-decoration:none;
 border-radius:30px;
-font-size:18px;
-transition:.3s;
 }
 
-.btn:hover{
-background:#1d4ed8;
-transform:scale(1.05);
-}
-
+/* Sections */
 section{
 padding:70px 8%;
 opacity:0;
@@ -211,12 +297,6 @@ align-items:center;
 .about img{
 width:100%;
 border-radius:15px;
-box-shadow:0 10px 20px rgba(0,0,0,.1);
-}
-
-.about-text p{
-font-size:18px;
-line-height:1.7;
 }
 
 .courses{
@@ -231,16 +311,6 @@ padding:25px;
 border-radius:15px;
 text-align:center;
 box-shadow:0 5px 15px rgba(0,0,0,.08);
-transition:.3s;
-}
-
-.course-card:hover{
-transform:translateY(-10px);
-}
-
-.course-card h3{
-margin-bottom:15px;
-color:#1d4ed8;
 }
 
 .stats{
@@ -249,7 +319,6 @@ color:white;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 text-align:center;
-gap:20px;
 }
 
 .stat h2{
@@ -260,13 +329,12 @@ font-size:42px;
 text-align:center;
 }
 
-input, textarea{
+input,textarea{
 width:100%;
 padding:14px;
 margin:10px 0;
 border:1px solid #ccc;
 border-radius:8px;
-font-size:16px;
 }
 
 button{
@@ -274,13 +342,8 @@ padding:14px 25px;
 border:none;
 background:#2563eb;
 color:white;
-font-size:17px;
 border-radius:8px;
 cursor:pointer;
-}
-
-button:hover{
-background:#1d4ed8;
 }
 
 footer{
@@ -291,6 +354,12 @@ padding:20px;
 }
 
 @media(max-width:768px){
+.about{
+grid-template-columns:1fr;
+}
+nav{
+display:none;
+}
 .hero-content h1{
 font-size:35px;
 white-space:normal;
@@ -298,21 +367,30 @@ border:none;
 animation:none;
 width:100%;
 }
-.about{
-grid-template-columns:1fr;
-}
-nav{
-display:none;
-}
 }
 </style>
 </head>
 <body>
 
+<!-- Intro -->
+<div id="introScreen">
+<div class="intro-box">
+<div class="intro-logo">🎓</div>
+<h1>Adarsh Institute</h1>
+<p>Empowering Your Digital Future</p>
+<button onclick="enterSite()">Enter Website</button>
+</div>
+</div>
+
+<!-- Loader -->
 <div id="loader">
 <div class="spinner"></div>
-<h2>Adarsh Institute</h2>
+<h2>Loading...</h2>
 </div>
+
+<!-- Floating buttons -->
+<a href="https://wa.me/919999999999" class="float-btn whatsapp">💬</a>
+<a href="tel:+919999999999" class="float-btn call">📞</a>
 
 <div class="cursor-glow"></div>
 
@@ -342,10 +420,8 @@ display:none;
 <h2 class="section-title">About Us</h2>
 <div class="about">
 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80">
-<div class="about-text">
-<p>
-Adarsh Institute is a leading computer education center dedicated to practical digital skills and career success.
-</p>
+<div>
+<p>Adarsh Institute is a leading computer education center dedicated to practical digital skills and career success.</p>
 </div>
 </div>
 </section>
@@ -353,12 +429,12 @@ Adarsh Institute is a leading computer education center dedicated to practical d
 <section id="courses">
 <h2 class="section-title">Our Courses</h2>
 <div class="courses">
-<div class="course-card"><h3>DCA</h3><p>Diploma in Computer Applications</p></div>
-<div class="course-card"><h3>ADCA</h3><p>Advanced Diploma in Computer Applications</p></div>
-<div class="course-card"><h3>Tally Prime</h3><p>Accounting & GST Training</p></div>
-<div class="course-card"><h3>Web Development</h3><p>HTML, CSS, JavaScript</p></div>
-<div class="course-card"><h3>Python Programming</h3><p>Learn Coding from Scratch</p></div>
-<div class="course-card"><h3>Typing Course</h3><p>Hindi & English Typing</p></div>
+<div class="course-card"><h3>DCA</h3></div>
+<div class="course-card"><h3>ADCA</h3></div>
+<div class="course-card"><h3>Tally Prime</h3></div>
+<div class="course-card"><h3>Web Development</h3></div>
+<div class="course-card"><h3>Python</h3></div>
+<div class="course-card"><h3>Typing</h3></div>
 </div>
 </section>
 
@@ -374,40 +450,41 @@ Adarsh Institute is a leading computer education center dedicated to practical d
 <input type="text" placeholder="Your Name" required>
 <input type="email" placeholder="Your Email" required>
 <textarea rows="5" placeholder="Your Message"></textarea>
-<button type="submit">Send Message</button>
+<button type="submit">Send</button>
 </form>
 <p id="msg"></p>
 </section>
 
 <footer>
-© 2026 Adarsh Institute | All Rights Reserved
+© 2026 Adarsh Institute
 </footer>
 
 <script>
+function enterSite(){
+document.getElementById("introScreen").style.opacity="0";
+setTimeout(()=>{
+document.getElementById("introScreen").style.display="none";
+},1000);
+}
+
 window.addEventListener("load",()=>{
 setTimeout(()=>{
 document.getElementById("loader").style.opacity="0";
 setTimeout(()=>{
 document.getElementById("loader").style.display="none";
 },1000);
-},2000);
+},1500);
 });
 
 function animateValue(id,start,end,duration){
 let obj=document.getElementById(id);
-let range=end-start;
 let current=start;
-let stepTime=Math.abs(Math.floor(duration/range));
-
-let timer=setInterval(function(){
+let timer=setInterval(()=>{
 current++;
-obj.textContent=current + (id==="success"?"%":"+");
-if(current==end){
-clearInterval(timer);
+obj.textContent=current+(id==="success"?"%":"+");
+if(current==end) clearInterval(timer);
+},duration/end);
 }
-},stepTime);
-}
-
 window.onload=function(){
 animateValue("students",0,1200,2000);
 animateValue("coursesCount",0,25,1500);
@@ -416,8 +493,7 @@ animateValue("success",0,98,1800);
 
 function sendMessage(e){
 e.preventDefault();
-document.getElementById("msg").innerHTML=
-"✅ Thank you! Your enquiry has been submitted.";
+document.getElementById("msg").innerHTML="✅ Thank you!";
 }
 
 const observer=new IntersectionObserver(entries=>{
@@ -427,10 +503,7 @@ entry.target.classList.add("show");
 }
 });
 });
-
-document.querySelectorAll("section").forEach(sec=>{
-observer.observe(sec);
-});
+document.querySelectorAll("section").forEach(sec=>observer.observe(sec));
 
 const glow=document.querySelector(".cursor-glow");
 document.addEventListener("mousemove",(e)=>{
